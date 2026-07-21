@@ -20,12 +20,12 @@ public class ConvertidorUnidad {
         
     }
     
-    private double toCelcius(double valor, String unidad) {
-        switch (unidad) {
+    private double toCelsius(double valor, String unidad) {
+        switch(unidad) {
             case "Celsius":
             return valor;
             
-            case "Fahrenheit;":
+            case "Fahrenheit":
             return(valor - 32.0) * 5.0 / 9.0;
             
             case "Kelvin":
@@ -35,14 +35,14 @@ public class ConvertidorUnidad {
                 return (valor - 491.67) * 5.0 / 9.0;
                 
            default:
-            System.out.println("Unidad de origen no válida: " + unidad);
+                return valor;
         }
         
     }
     
     private double fromCelsius(double celsius, String unidad) {
 
-        switch (unidad) {
+        switch(unidad) {
 
             case "Celsius":
                 return celsius;
@@ -57,8 +57,9 @@ public class ConvertidorUnidad {
                 return (celsius + 273.15) * 9.0 / 5.0;
 
             default:
-                System.out.println(": " + unidad);
+                return celsius;
         }
     }
-    
+
+   
 }
