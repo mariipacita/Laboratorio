@@ -4,6 +4,8 @@
  */
 package modeloAgenda;
 
+import javax.swing.DefaultListModel;
+
 /**
  *
  * @author gabri
@@ -43,19 +45,16 @@ public class frmAgenda extends javax.swing.JFrame {
         jLabel1.setText("Tarea");
 
         agregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/modeloAgenda/img/24/48/48/add (4).png"))); // NOI18N
+        agregar.addActionListener(this::agregarActionPerformed);
 
         completar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/modeloAgenda/img/24/48/48/accepted_48.png"))); // NOI18N
+        completar.addActionListener(this::completarActionPerformed);
 
         eliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/modeloAgenda/img/24/48/48/application_exit (4).png"))); // NOI18N
+        eliminar.addActionListener(this::eliminarActionPerformed);
 
-        txtDresripcionTarea.setText("jTextField1");
         txtDresripcionTarea.addActionListener(this::txtDresripcionTareaActionPerformed);
 
-        lista.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
         jScrollPane1.setViewportView(lista);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -109,6 +108,21 @@ public class frmAgenda extends javax.swing.JFrame {
         
     }//GEN-LAST:event_txtDresripcionTareaActionPerformed
 
+    private void agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarActionPerformed
+        // TODO add your handling code here:
+        control.addTarea();
+    }//GEN-LAST:event_agregarActionPerformed
+
+    private void completarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_completarActionPerformed
+        // TODO add your handling code here:
+        control.tareaCompleta();
+    }//GEN-LAST:event_completarActionPerformed
+
+    private void eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarActionPerformed
+        // TODO add your handling code here:
+        control.eliminarTarea();
+    }//GEN-LAST:event_eliminarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -161,7 +175,9 @@ public String tenerDescripcion(){
     public int listaSeleccion(){
         return lista.getSelectedIndex();
     }
-    
+public void cambiarLista(DefaultListModel listaM){
+    lista.setModel(listaM);
+}    
 
 
 

@@ -17,17 +17,17 @@ private int cant;
 
     public ControlAgenda(frmAgenda vista) {
         this.vista = vista;
-        this.tarea = new tareas[100];
+        this.tarea = new tareas[1000];
         this.cant = 0;
     }
 
  public void addTarea(){
      String descripcion = vista.tenerDescripcion();
      if (!descripcion.isEmpty()){
-         tareas work = new tareas(descripcion,false);
-                 tarea[cant]= work;
+         tareas trabajo = new tareas(descripcion,false);
+                 tarea[cant]= trabajo;
                  cant ++;
-                 
+             actualizarLista();     
      }
  }
     
@@ -35,6 +35,7 @@ private int cant;
        int listaposicion = vista.listaSeleccion();
        if(listaposicion >=0)
            tarea[listaposicion].setCompletado(true);
+        actualizarLista();
    }
    public void eliminarTarea(){
        int pos = vista.listaSeleccion();
@@ -51,9 +52,20 @@ private int cant;
            tarea[i] = tarea[i + 1];
        }
        cant--;
+       actualizarLista();
    }
    
-   
+   public void actualizarLista(){
+       javax.swing.DefaultListModel listaM = new javax.swing.DefaultListModel();
+       for(int i = 0; i <cant;i++){
+           if(tarea[i].isCompletado()){
+               listaM.addElement( tarea[i].getDescripcion()+ " (completado)");
+           }else{
+           listaM.addElement( tarea[i].getDescripcion()+ " (Pendiente)");
+       }
+       }
+       vista.cambiarLista(listaM);
+   }
    
    
    
