@@ -10,20 +10,29 @@ package modeloAgenda;
  */
 public class tareas {
     protected String descripcion;
-    protected String estado;
+    protected boolean completado;
 
-    public tareas(String descripcion, String estado) {
-        this.descripcion = descripcion;
-        this.estado = estado;
-    }
+    public boolean isCompletado() {
+        return completado;
+    } 
 
     public String getDescripcion() {
         return descripcion;
     }
 
-    public String getEstado() {
-        return estado;
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
+
+    public void setCompletado(boolean completado) {
+        this.completado = completado;
+    }
+
+    public tareas(String descripcion, boolean completado) {
+        this.descripcion = descripcion;
+        this.completado = completado;
+    }
+
     
     
     

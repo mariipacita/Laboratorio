@@ -9,12 +9,14 @@ package modeloAgenda;
  * @author gabri
  */
 public class frmAgenda extends javax.swing.JPanel {
-
+ private ControlAgenda control;
     /**
      * Creates new form frmAgenda
      */
     public frmAgenda() {
         initComponents();
+        control =new ControlAgenda(this);
+        
     }
 
     /**
@@ -26,23 +28,13 @@ public class frmAgenda extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
         jLabel1 = new javax.swing.JLabel();
         agregar = new javax.swing.JButton();
         completar = new javax.swing.JButton();
         eliminar = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
+        txtDescripcionTarea = new javax.swing.JTextField();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jList2 = new javax.swing.JList<>();
-
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane2.setViewportView(jList1);
+        lista = new javax.swing.JList<>();
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel1.setText("Tarea");
@@ -57,10 +49,13 @@ public class frmAgenda extends javax.swing.JPanel {
         completar.setMaximumSize(new java.awt.Dimension(30, 31));
         completar.setMinimumSize(new java.awt.Dimension(30, 31));
         completar.setPreferredSize(new java.awt.Dimension(30, 31));
+        completar.addActionListener(this::completarActionPerformed);
 
         eliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/modeloAgenda/img/24/48/48/application_exit (4).png"))); // NOI18N
 
-        jScrollPane3.setViewportView(jList2);
+        txtDescripcionTarea.addActionListener(this::txtDescripcionTareaActionPerformed);
+
+        jScrollPane3.setViewportView(lista);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -74,7 +69,7 @@ public class frmAgenda extends javax.swing.JPanel {
                         .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtDescripcionTarea, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
                         .addComponent(agregar, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -94,7 +89,7 @@ public class frmAgenda extends javax.swing.JPanel {
                         .addGroup(layout.createSequentialGroup()
                             .addComponent(jLabel1)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtDescripcionTarea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addComponent(eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(agregar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -105,19 +100,59 @@ public class frmAgenda extends javax.swing.JPanel {
 
     private void agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarActionPerformed
         // TODO add your handling code here:
+        
+        control.addTarea();
     }//GEN-LAST:event_agregarActionPerformed
 
+    private void txtDescripcionTareaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDescripcionTareaActionPerformed
+        // TODO add your handling code here:
+       
+    }//GEN-LAST:event_txtDescripcionTareaActionPerformed
+
+    private void completarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_completarActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_completarActionPerformed
+
+    
+    public String tenerDescripcion(){
+        return txtDescripcionTarea.getText();
+    }
+    public int listaSeleccion(){
+        return lista.getSelectedIndex();
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton agregar;
     private javax.swing.JButton completar;
     private javax.swing.JButton eliminar;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JList<String> jList1;
-    private javax.swing.JList<String> jList2;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JList<String> lista;
+    private javax.swing.JTextField txtDescripcionTarea;
     // End of variables declaration//GEN-END:variables
+
+public static void main(String args[]){
+  frmAgenda ventana = new frmAgenda();
+ventana.setVisible(true);
+
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
