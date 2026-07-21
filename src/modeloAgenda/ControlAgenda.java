@@ -36,7 +36,22 @@ private int cant;
        if(listaposicion >=0)
            tarea[listaposicion].setCompletado(true);
    }
-   
+   public void eliminarTarea(){
+       int pos = vista.listaSeleccion();
+       if(pos>=0){
+           if(tarea[pos].isCompletado()== false){
+               javax.swing.JOptionPane.showConfirmDialog(null, "Tarea sigue pendiente Desea eliminar?",
+                       "confirmar", javax.swing.JOptionPane.YES_NO_OPTION);
+               
+                       
+           }
+       }
+       
+       for(int i = pos; i < cant -1; i++){
+           tarea[i] = tarea[i + 1];
+       }
+       cant--;
+   }
    
    
    

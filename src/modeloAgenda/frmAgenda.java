@@ -1,6 +1,6 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package modeloAgenda;
 
@@ -8,15 +8,16 @@ package modeloAgenda;
  *
  * @author gabri
  */
-public class frmAgenda extends javax.swing.JPanel {
- private ControlAgenda control;
+public class frmAgenda extends javax.swing.JFrame {
+    
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(frmAgenda.class.getName());
+   private ControlAgenda control;
     /**
      * Creates new form frmAgenda
      */
     public frmAgenda() {
         initComponents();
         control =new ControlAgenda(this);
-        
     }
 
     /**
@@ -32,94 +33,105 @@ public class frmAgenda extends javax.swing.JPanel {
         agregar = new javax.swing.JButton();
         completar = new javax.swing.JButton();
         eliminar = new javax.swing.JButton();
-        txtDescripcionTarea = new javax.swing.JTextField();
-        jScrollPane3 = new javax.swing.JScrollPane();
+        txtDresripcionTarea = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
         lista = new javax.swing.JList<>();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel1.setText("Tarea");
 
         agregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/modeloAgenda/img/24/48/48/add (4).png"))); // NOI18N
-        agregar.setPreferredSize(new java.awt.Dimension(29, 28));
-        agregar.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        agregar.addActionListener(this::agregarActionPerformed);
 
-        completar.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
         completar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/modeloAgenda/img/24/48/48/accepted_48.png"))); // NOI18N
-        completar.setMaximumSize(new java.awt.Dimension(30, 31));
-        completar.setMinimumSize(new java.awt.Dimension(30, 31));
-        completar.setPreferredSize(new java.awt.Dimension(30, 31));
-        completar.addActionListener(this::completarActionPerformed);
 
         eliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/modeloAgenda/img/24/48/48/application_exit (4).png"))); // NOI18N
 
-        txtDescripcionTarea.addActionListener(this::txtDescripcionTareaActionPerformed);
+        txtDresripcionTarea.setText("jTextField1");
+        txtDresripcionTarea.addActionListener(this::txtDresripcionTareaActionPerformed);
 
-        jScrollPane3.setViewportView(lista);
+        lista.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane1.setViewportView(lista);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane3)
-                        .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane1)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtDescripcionTarea, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
-                        .addComponent(agregar, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtDresripcionTarea, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(12, 12, 12)
+                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 102, Short.MAX_VALUE)
+                        .addComponent(agregar, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(completar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(completar, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(10, 10, 10))))
+                        .addComponent(eliminar)
+                        .addGap(16, 16, 16)))
+                .addGap(8, 8, 8))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(46, 46, 46)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(completar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabel1)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtDescripcionTarea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(agregar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addGap(28, 28, 28)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(17, 17, 17)
+                        .addComponent(txtDresripcionTarea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(agregar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(completar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(7, Short.MAX_VALUE))
         );
+
+        pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarActionPerformed
+    private void txtDresripcionTareaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDresripcionTareaActionPerformed
         // TODO add your handling code here:
         
-        control.addTarea();
-    }//GEN-LAST:event_agregarActionPerformed
-
-    private void txtDescripcionTareaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDescripcionTareaActionPerformed
-        // TODO add your handling code here:
-       
-    }//GEN-LAST:event_txtDescripcionTareaActionPerformed
-
-    private void completarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_completarActionPerformed
-        // TODO add your handling code here:
         
-    }//GEN-LAST:event_completarActionPerformed
+        
+        
+    }//GEN-LAST:event_txtDresripcionTareaActionPerformed
 
-    
-    public String tenerDescripcion(){
-        return txtDescripcionTarea.getText();
-    }
-    public int listaSeleccion(){
-        return lista.getSelectedIndex();
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ReflectiveOperationException | javax.swing.UnsupportedLookAndFeelException ex) {
+            logger.log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(() -> new frmAgenda().setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -127,20 +139,11 @@ public class frmAgenda extends javax.swing.JPanel {
     private javax.swing.JButton completar;
     private javax.swing.JButton eliminar;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JList<String> lista;
-    private javax.swing.JTextField txtDescripcionTarea;
+    private javax.swing.JTextField txtDresripcionTarea;
     // End of variables declaration//GEN-END:variables
 
-public static void main(String args[]){
-  frmAgenda ventana = new frmAgenda();
-ventana.setVisible(true);
-
-
-
-
-
-}
 
 
 
@@ -148,6 +151,17 @@ ventana.setVisible(true);
 
 
 
+
+
+
+
+public String tenerDescripcion(){
+        return txtDresripcionTarea.getText();
+    }
+    public int listaSeleccion(){
+        return lista.getSelectedIndex();
+    }
+    
 
 
 
