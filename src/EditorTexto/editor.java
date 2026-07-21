@@ -14,12 +14,7 @@ public class editor {
     private String contenido;
     private boolean negrita;
     private boolean cursiva;
-    private boolean abrir;
-    private boolean guardar;
-    private boolean salir;
-    private boolean copiar;
-    private boolean cortar;
-    private boolean pegar;
+    public boolean guardado;
 
     public String getNombre() {
         return nombre;
@@ -37,14 +32,17 @@ public class editor {
         return negrita;
     }
 
-    public boolean isGuardar() {
-        return guardar;
-    }
-
     public boolean isCursiva() {
         return cursiva;
     }
-    
+
+    public boolean isGuardado() {
+        return guardado;
+    }
+
+    public void setGuardado(boolean guardado) {
+        this.guardado = guardado;
+    }
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
@@ -66,9 +64,16 @@ public class editor {
         this.cursiva = cursiva;
     }
 
-    public void setGuardar(boolean guardar) {
-        this.guardar = guardar;
+    public editor(String nombre, String ruta, String contenido, boolean negrita, boolean cursiva) {
+        this.nombre = nombre;
+        this.ruta = ruta;
+        this.contenido = contenido;
+        this.negrita = negrita;
+        this.cursiva = cursiva;
+        this.guardado= true;
     }
+    
+    
     
     
     
