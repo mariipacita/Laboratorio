@@ -12,11 +12,11 @@ public class ConstructorConvertidor {
 
     public double convertir(double valor, String origen, String destino) {
 
-        // Si son iguales no hace nada
+        // Si son iguales que no haga nada
         if (origen.equals(destino))
             return valor;
 
-        // Convertir todo primero a Celsius
+        // primero convertir todo a Celsius
         double celsius = 0;
 
         switch (origen) {
@@ -37,7 +37,7 @@ public class ConstructorConvertidor {
                 break;
         }
 
-        // Convertir de Celsius al destino
+        // despues convertir de Celsius a destino
         switch (destino) {
 
             case "Celsius":
