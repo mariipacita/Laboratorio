@@ -8,24 +8,33 @@ package convertidoresUnidades;
  *
  * @author sharys
  */
-public class frmConvertidor extends javax.swing.JFrame {
+public class FrmConvertidor extends javax.swing.JFrame {
     
-   
-    
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(frmConvertidor.class.getName());
+    private ConvertidorUnidad convertir = new ConvertidorUnidad();
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FrmConvertidor.class.getName());
 
-    /**
-     * Creates new form frmConvertidor
-     */
-    public frmConvertidor() {
-        initComponents();
-        
-        setTitle("Convertidor de Unidades");
+
     
+    /**
+     * Creates new form FrmConvertidor
+     */
+    public FrmConvertidor() {
+        initComponents();
     }
     
-        
+    private void convertir() {
 
+    double valor = ((Number)spnValor.getValue()).doubleValue();
+
+    String origen = cbOrigen.getSelectedItem().toString();
+
+    String destino = cbDestino.getSelectedItem().toString();
+
+    double resultado = convertir.convertir(valor, origen, destino);
+
+    txtResultado.setText(String.format("%.2f", resultado));
+
+}
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -35,109 +44,125 @@ public class frmConvertidor extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        spnValor = new javax.swing.JSpinner();
+        jPanel1 = new javax.swing.JPanel();
         txtResultado = new javax.swing.JTextField();
-        cbDestino = new javax.swing.JComboBox<>();
         btnIntercambiar = new javax.swing.JButton();
         cbOrigen = new javax.swing.JComboBox<>();
+        cbDestino = new javax.swing.JComboBox<>();
+        spnValor = new javax.swing.JSpinner();
+        TituloValor = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Convertidor de Imagenes");
-
-        jLabel1.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
-        jLabel1.setText("Valor");
-
-        jLabel2.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
-        jLabel2.setText("Resultado");
-
-        spnValor.setModel(new javax.swing.SpinnerNumberModel(Short.valueOf((short)0), Short.valueOf((short)0), Short.valueOf((short)100), Short.valueOf((short)1)));
-        spnValor.addChangeListener(this::spnValorStateChanged);
 
         txtResultado.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
         txtResultado.addActionListener(this::txtResultadoActionPerformed);
 
-        cbDestino.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
-        cbDestino.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Celsius", "Fahrenheit", "Kelvin", "Rankine" }));
-        cbDestino.addActionListener(this::cbDestinoActionPerformed);
-
-        btnIntercambiar.setFont(new java.awt.Font("Helvetica Neue", 0, 24)); // NOI18N
-        btnIntercambiar.setText("< >");
+        btnIntercambiar.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        btnIntercambiar.setText("<->");
         btnIntercambiar.addActionListener(this::btnIntercambiarActionPerformed);
 
         cbOrigen.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
         cbOrigen.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Celsius", "Fahrenheit", "Kelvin", "Rankine" }));
         cbOrigen.addActionListener(this::cbOrigenActionPerformed);
 
+        cbDestino.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        cbDestino.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Celsius", "Fahrenheit", "Kelvin", "Rankine" }));
+        cbDestino.addActionListener(this::cbDestinoActionPerformed);
+
+        spnValor.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        spnValor.addChangeListener(this::spnValorStateChanged);
+
+        TituloValor.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        TituloValor.setText("Valor");
+
+        jLabel2.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        jLabel2.setText("Resultado");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(TituloValor, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(spnValor)
+                                .addGap(84, 84, 84)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtResultado, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(cbOrigen, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnIntercambiar, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(cbDestino, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 111, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(TituloValor)
+                    .addComponent(jLabel2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtResultado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(spnValor, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cbOrigen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnIntercambiar)
+                    .addComponent(cbDestino, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(170, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(cbOrigen, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnIntercambiar, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(spnValor, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1))
-                        .addGap(18, 18, Short.MAX_VALUE)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(txtResultado)
-                        .addComponent(cbDestino, 0, 185, Short.MAX_VALUE))
-                    .addComponent(jLabel2))
-                .addContainerGap(39, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(27, 27, 27)
-                        .addComponent(jLabel2))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel1)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(spnValor, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtResultado, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cbOrigen, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cbDestino, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnIntercambiar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(32, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    
+
+    private void cbOrigenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbOrigenActionPerformed
+        convertir();
+    }//GEN-LAST:event_cbOrigenActionPerformed
+
+    private void cbDestinoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbDestinoActionPerformed
+       convertir();
+    }//GEN-LAST:event_cbDestinoActionPerformed
+
+    private void btnIntercambiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIntercambiarActionPerformed
+            int indice = cbOrigen.getSelectedIndex();
+
+    cbOrigen.setSelectedIndex(cbDestino.getSelectedIndex());
+
+    cbDestino.setSelectedIndex(indice);
+
+    convertir();
+    }//GEN-LAST:event_btnIntercambiarActionPerformed
+
     private void txtResultadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtResultadoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtResultadoActionPerformed
 
-    private void cbOrigenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbOrigenActionPerformed
-        
-    }//GEN-LAST:event_cbOrigenActionPerformed
-
-    private void cbDestinoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbDestinoActionPerformed
-     
-    }//GEN-LAST:event_cbDestinoActionPerformed
-
     private void spnValorStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_spnValorStateChanged
-     
+       convertir();
     }//GEN-LAST:event_spnValorStateChanged
-
-    private void btnIntercambiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIntercambiarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnIntercambiarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -161,37 +186,17 @@ public class frmConvertidor extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new frmConvertidor().setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> new FrmConvertidor().setVisible(true));
     }
-    
-public javax.swing.JSpinner getSpnValor() {
-    return spnValor;
-}
-
-public javax.swing.JComboBox<String> getCbOrigen() {
-    return cbOrigen;
-}
-
-public javax.swing.JComboBox<String> getCbDestino() {
-    return cbDestino;
-}
-
-public javax.swing.JButton getBtnIntercambiar() {
-    return btnIntercambiar;
-}
-
-public javax.swing.JTextField getTxtResultado() {
-    return txtResultado;
-}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel TituloValor;
     private javax.swing.JButton btnIntercambiar;
     private javax.swing.JComboBox<String> cbDestino;
     private javax.swing.JComboBox<String> cbOrigen;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JSpinner spnValor;
+    private javax.swing.JPanel jPanel1;
+    public javax.swing.JSpinner spnValor;
     private javax.swing.JTextField txtResultado;
     // End of variables declaration//GEN-END:variables
 }
-
