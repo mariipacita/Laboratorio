@@ -21,7 +21,7 @@ public class ConvertidorUnidad {
     }
     
     private double toCelsius(double valor, String unidad) {
-        switch(unidad) {
+        switch (unidad) {
             case "Celsius":
             return valor;
             
@@ -42,7 +42,7 @@ public class ConvertidorUnidad {
     
     private double fromCelsius(double celsius, String unidad) {
 
-        switch(unidad) {
+        switch (unidad) {
 
             case "Celsius":
                 return celsius;
@@ -61,5 +61,6 @@ public class ConvertidorUnidad {
         }
     }
 
+   
    
 }

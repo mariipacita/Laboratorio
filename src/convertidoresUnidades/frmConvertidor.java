@@ -10,7 +10,7 @@ package convertidoresUnidades;
  */
 public class frmConvertidor extends javax.swing.JFrame {
     
-    private ConvertidorUnidad logic = new ConvertidorUnidad();
+   
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(frmConvertidor.class.getName());
 
@@ -52,6 +52,7 @@ public class frmConvertidor extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
         jLabel2.setText("Resultado");
 
+        spnValor.setModel(new javax.swing.SpinnerNumberModel(Short.valueOf((short)0), Short.valueOf((short)0), Short.valueOf((short)100), Short.valueOf((short)1)));
         spnValor.addChangeListener(this::spnValorStateChanged);
 
         txtResultado.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
@@ -63,6 +64,7 @@ public class frmConvertidor extends javax.swing.JFrame {
 
         btnIntercambiar.setFont(new java.awt.Font("Helvetica Neue", 0, 24)); // NOI18N
         btnIntercambiar.setText("< >");
+        btnIntercambiar.addActionListener(this::btnIntercambiarActionPerformed);
 
         cbOrigen.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
         cbOrigen.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Celsius", "Fahrenheit", "Kelvin", "Rankine" }));
@@ -116,37 +118,26 @@ public class frmConvertidor extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void calcular() {
-            double valor = Double.parseDouble(spnValor.getValue().toString());
-            String origen = cbOrigen.getSelectedItem().toString();
-            String destino = cbDestino.getSelectedItem().toString();
-            double resultado = logic.convertir(valor, origen, destino);
-        txtResultado.setText(String.format("%.2f", resultado));
-        }
-    
-    private void btnIntercambiarActionPerformed(java.awt.event.ActionEvent evt) {
-       int indexOrigen = cbOrigen.getSelectedIndex();
-       cbOrigen.setSelectedIndex(cbDestino.getSelectedIndex());
-       cbDestino.setSelectedIndex(indexOrigen);
-       calcular();
-    }
     
     private void txtResultadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtResultadoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtResultadoActionPerformed
 
     private void cbOrigenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbOrigenActionPerformed
-        calcular();
+        
     }//GEN-LAST:event_cbOrigenActionPerformed
 
     private void cbDestinoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbDestinoActionPerformed
-      calcular();
+     
     }//GEN-LAST:event_cbDestinoActionPerformed
 
     private void spnValorStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_spnValorStateChanged
-      calcular();
+     
     }//GEN-LAST:event_spnValorStateChanged
+
+    private void btnIntercambiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIntercambiarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnIntercambiarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -172,6 +163,26 @@ public class frmConvertidor extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> new frmConvertidor().setVisible(true));
     }
+    
+public javax.swing.JSpinner getSpnValor() {
+    return spnValor;
+}
+
+public javax.swing.JComboBox<String> getCbOrigen() {
+    return cbOrigen;
+}
+
+public javax.swing.JComboBox<String> getCbDestino() {
+    return cbDestino;
+}
+
+public javax.swing.JButton getBtnIntercambiar() {
+    return btnIntercambiar;
+}
+
+public javax.swing.JTextField getTxtResultado() {
+    return txtResultado;
+}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnIntercambiar;
@@ -183,3 +194,4 @@ public class frmConvertidor extends javax.swing.JFrame {
     private javax.swing.JTextField txtResultado;
     // End of variables declaration//GEN-END:variables
 }
+
