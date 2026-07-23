@@ -72,10 +72,4 @@ public class editor {
         this.cursiva = cursiva;
         this.guardado= true;
     }
-    
-    
-    
-    
-    
-    
 }

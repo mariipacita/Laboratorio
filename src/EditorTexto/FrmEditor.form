@@ -116,7 +116,6 @@
               <SubComponents>
                 <MenuItem class="javax.swing.JCheckBoxMenuItem" name="jCheckBoxMenuItem3">
                   <Properties>
-                    <Property name="selected" type="boolean" value="true"/>
                     <Property name="text" type="java.lang.String" value="Cursiva"/>
                   </Properties>
                   <Events>
@@ -125,7 +124,6 @@
                 </MenuItem>
                 <MenuItem class="javax.swing.JCheckBoxMenuItem" name="jCheckBoxMenuItem1">
                   <Properties>
-                    <Property name="selected" type="boolean" value="true"/>
                     <Property name="text" type="java.lang.String" value="Negrita"/>
                   </Properties>
                   <Events>

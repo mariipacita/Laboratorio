@@ -14,7 +14,25 @@ import javax.swing.JOptionPane;
 public class FrmEditor extends javax.swing.JFrame {
     private boolean guardado = true;
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FrmEditor.class.getName());
+    public javax.swing.JTextArea getTextArea() {
+    return jTextArea1;
+    }
 
+    public javax.swing.JFileChooser getFileChooserAbrir() {
+    return jFileChooser1;
+    }
+
+    public javax.swing.JFileChooser getFileChooserGuardar() {
+    return jFileChooser2;
+    }
+
+    public javax.swing.JCheckBoxMenuItem getMenuNegrita() {
+    return jCheckBoxMenuItem1;
+}
+
+   public javax.swing.JCheckBoxMenuItem getMenuCursiva() {
+    return jCheckBoxMenuItem3;
+} 
     /**
      * Creates new form FrmEditor
      */
@@ -115,12 +133,10 @@ public class FrmEditor extends javax.swing.JFrame {
 
         jMenu3.setText("Fuente");
 
-        jCheckBoxMenuItem3.setSelected(true);
         jCheckBoxMenuItem3.setText("Cursiva");
         jCheckBoxMenuItem3.addActionListener(this::jCheckBoxMenuItem3ActionPerformed);
         jMenu3.add(jCheckBoxMenuItem3);
 
-        jCheckBoxMenuItem1.setSelected(true);
         jCheckBoxMenuItem1.setText("Negrita");
         jCheckBoxMenuItem1.addActionListener(this::jCheckBoxMenuItem1ActionPerformed);
         jMenu3.add(jCheckBoxMenuItem1);
@@ -229,7 +245,7 @@ public class FrmEditor extends javax.swing.JFrame {
     }//GEN-LAST:event_jCheckBoxMenuItem1ActionPerformed
 
     private void jCheckBoxMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxMenuItem3ActionPerformed
-        if (jCheckBoxMenuItem2.isSelected()) {
+        if (jCheckBoxMenuItem3.isSelected()) {
 
     jTextArea1.setFont(jTextArea1.getFont().deriveFont(java.awt.Font.ITALIC));
 
@@ -312,4 +328,5 @@ public class FrmEditor extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables
+
 }
