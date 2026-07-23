@@ -51,6 +51,8 @@ public class FrmEditor extends javax.swing.JFrame {
         jMenu3 = new javax.swing.JMenu();
         jCheckBoxMenuItem3 = new javax.swing.JCheckBoxMenuItem();
         jCheckBoxMenuItem1 = new javax.swing.JCheckBoxMenuItem();
+        jMenu5 = new javax.swing.JMenu();
+        jMenuItem8 = new javax.swing.JMenuItem();
         jMenuItem9 = new javax.swing.JMenuItem();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -125,9 +127,17 @@ public class FrmEditor extends javax.swing.JFrame {
 
         jMenu2.add(jMenu3);
 
-        jMenuItem9.setText("Color");
+        jMenu5.setText("Color");
+
+        jMenuItem8.setText("Fondo");
+        jMenuItem8.addActionListener(this::jMenuItem8ActionPerformed);
+        jMenu5.add(jMenuItem8);
+
+        jMenuItem9.setText("Letra");
         jMenuItem9.addActionListener(this::jMenuItem9ActionPerformed);
-        jMenu2.add(jMenuItem9);
+        jMenu5.add(jMenuItem9);
+
+        jMenu2.add(jMenu5);
 
         jMenuBar1.add(jMenu2);
 
@@ -172,10 +182,6 @@ public class FrmEditor extends javax.swing.JFrame {
     }
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
-    private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem9ActionPerformed
-
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
         jFileChooser1.showOpenDialog(this);
          if (jFileChooser1.getSelectedFile() != null) {
@@ -215,7 +221,7 @@ public class FrmEditor extends javax.swing.JFrame {
 
     jTextArea1.setFont(jTextArea1.getFont().deriveFont(java.awt.Font.BOLD));
 
-} else {
+      } else {
 
     jTextArea1.setFont(jTextArea1.getFont().deriveFont(java.awt.Font.PLAIN));
 
@@ -227,12 +233,34 @@ public class FrmEditor extends javax.swing.JFrame {
 
     jTextArea1.setFont(jTextArea1.getFont().deriveFont(java.awt.Font.ITALIC));
 
-} else {
+      } else {
 
     jTextArea1.setFont(jTextArea1.getFont().deriveFont(java.awt.Font.PLAIN));
 
-}
+      }
     }//GEN-LAST:event_jCheckBoxMenuItem3ActionPerformed
+
+    private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
+       java.awt.Color colorFondo = javax.swing.JColorChooser.showDialog(
+        this,
+        "Seleccione un color de fondo",
+        jTextArea1.getBackground());
+
+        if (colorFondo != null) {
+       jTextArea1.setBackground(colorFondo);
+     }
+    }//GEN-LAST:event_jMenuItem8ActionPerformed
+
+    private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
+        java.awt.Color colorLetra = javax.swing.JColorChooser.showDialog(
+        this,
+        "Seleccione un color de letra",
+        jTextArea1.getForeground());
+
+        if (colorLetra != null) {
+        jTextArea1.setForeground(colorLetra);
+}
+    }//GEN-LAST:event_jMenuItem9ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -269,6 +297,7 @@ public class FrmEditor extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
@@ -277,6 +306,7 @@ public class FrmEditor extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
+    private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
