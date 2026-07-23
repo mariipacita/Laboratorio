@@ -31,11 +31,8 @@ public class tareas {
     public tareas(String descripcion, boolean completado) {
         this.descripcion = descripcion;
         this.completado = completado;
-    }
-
-    
-    
-    
-    
-    
+      
 }
+}
+    
+    
